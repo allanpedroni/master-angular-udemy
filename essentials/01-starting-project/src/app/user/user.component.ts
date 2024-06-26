@@ -1,5 +1,5 @@
 //signal = allow angular to detect changes in the object
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -11,6 +11,13 @@ import { Component } from '@angular/core';
 })
 export class UserComponent {
   
+  @Input() avatar!: string;
+  @Input() name!: string;
+
+  public get imagePath(): string {
+    return `assets/users/${this.avatar}`;
+  }
+
   onSelectUser() {
   }
 }
