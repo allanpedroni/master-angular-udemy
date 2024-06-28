@@ -1,4 +1,4 @@
-<section id=""task>
+<section id="" task>
   <header>
     <h2>{{ name }}'s Tasks</h2>
     <menu>
@@ -7,16 +7,11 @@
   </header>
 
   <ul>
-    <li>
-      <app-task />
-    </li>
-    <li>
-      <app-task />
-    </li>
-    <li>
-      <app-task />
-    </li>
+    @for (task of tasks; track task.id)
+    {
+      <li>
+        <app-task />
+      </li>
+    }
   </ul>
 </section>
-
-
