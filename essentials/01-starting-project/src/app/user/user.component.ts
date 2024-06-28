@@ -1,11 +1,6 @@
 //signal = allow angular to detect changes in the object
 import { Component, EventEmitter, Input, Output, input } from '@angular/core';
-
-type User = {
-  id: string;
-  name: string;
-  avatar: string;
-};
+import { type User } from './user.model';
 
 @Component({
   selector: 'app-user',
@@ -15,7 +10,7 @@ type User = {
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  
+
   @Input({required: true}) user!: User;
   @Output() select = new EventEmitter<string>();
 
