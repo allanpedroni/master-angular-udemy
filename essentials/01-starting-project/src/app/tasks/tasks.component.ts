@@ -71,4 +71,9 @@ export class TasksComponent {
     console.log('Add Task button clicked');
     this.isAddingTask = true;
   }
+
+  onCancelAddTask() {
+    console.log('Cancel Add Task button clicked');
+    this.isAddingTask = false;
+  }
 }
