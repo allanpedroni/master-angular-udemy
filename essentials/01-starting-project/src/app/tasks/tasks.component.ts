@@ -23,11 +23,6 @@ export class TasksComponent {
     return this.tasksService.getUserTasks(this.userId);
   }
 
-  onCompleteTask(id: string) {
-    console.log(`Task ${id} was completed`);
-    this.tasksService.removeTask(id);
-  }
-
   onStartAddTask() {
     console.log('Add Task button clicked');
     this.isAddingTask = true;
