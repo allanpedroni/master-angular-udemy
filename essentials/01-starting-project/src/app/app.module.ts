@@ -1,13 +1,10 @@
 import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
 
 @NgModule({
-  declarations: [],
+  declarations: [AppComponent],
   imports: [],
   providers: [],
-  bootstrap: []
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor() {
-
-  }
-}
+export class AppModule {}
