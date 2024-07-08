@@ -1,5 +1,5 @@
-import { Component, Input, input } from '@angular/core';
-import { InvestmentResult } from '../investiment-input.model';
+import { Component, input } from '@angular/core';
+import { InvestmentResult } from "../investiments.model";
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -10,5 +10,5 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './investment-results.component.css'
 })
 export class InvestmentResultsComponent {
-  @Input() results?: InvestmentResult[];
+  results? = input<InvestmentResult[]>();
 }
