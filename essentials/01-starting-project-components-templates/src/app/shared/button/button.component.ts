@@ -6,7 +6,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   imports: [],
   templateUrl: './button.component.html',
   styleUrl: './button.component.css',
-  encapsulation: ViewEncapsulation.None //disable shadow DOM encapsulation for this component
+  //encapsulation: ViewEncapsulation.None //disable shadow DOM encapsulation for this component
 })
 export class ButtonComponent {
 
