@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, ViewEncapsulation, input } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, ViewEncapsulation, inject, input } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -9,7 +9,7 @@ import { Component, HostBinding, HostListener, ViewEncapsulation, input } from '
   encapsulation: ViewEncapsulation.None, //NOTE: disable shadow DOM encapsulation for this component
   host: {
     class: 'control', //NOTE: add class to host element, in this case the component itself (app-control)
-    //'(click)': 'onClick()', //NOTE: add role attribute to host element
+    '(click)': 'onClick()', //NOTE: add role attribute to host element
   }
 })
 export class ControlComponent {
@@ -25,7 +25,12 @@ export class ControlComponent {
 
   label = input.required<string>();
 
-  // onClick() {
-  //   console.log('clicked!');
-  // }
+  //angular will inject the element reference of the host element,
+  //and give access to it via the el property
+  private el = inject(ElementRef);
+
+  onClick() {
+    console.log('clicked!');
+    console.log(this.el); //
+  }
 }
