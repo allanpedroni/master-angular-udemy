@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -10,14 +10,16 @@ import { Component } from '@angular/core';
 export class ServerStatusComponent {
   //setting specific string values as types using union types
   currentStatus: 'online' | 'offline' | 'unknown' = 'offline';
+  //private destroyRef =
 
-  constructor() {
+  constructor(private destroyRef: DestroyRef) {
+    //this.destroyRef = destroyRef;
   }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    setInterval(() => {
+    const interval = setInterval(() => {
       const rnd = Math.random();
 
       if (rnd < 0.5) {
@@ -29,6 +31,9 @@ export class ServerStatusComponent {
       }
     }, 5000);
 
+    this.destroyRef.onDestroy(() => {
+      clearInterval(interval);
+    });
   }
 
 }
