@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, ViewEncapsulation, inject, input } from '@angular/core';
+import { Component, ContentChild, ElementRef, HostBinding, HostListener, ViewEncapsulation, contentChild, inject, input } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -23,6 +23,10 @@ export class ControlComponent {
   //use host: { '(click)': 'onClick()' } instead
   //@HostListener('click', ['onClick()'])
 
+  //use @ContentChild to get a reference to the input element though the ng-content template
+  //@ContentChild('input') private control: ElementRef<HTMLInputElement | HTMLTextAreaElement> | undefined;
+  private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
   label = input.required<string>();
 
   //angular will inject the element reference of the host element,
@@ -32,5 +36,6 @@ export class ControlComponent {
   onClick() {
     console.log('clicked!');
     console.log(this.el); //
+    console.log(this.control());
   }
 }

@@ -14,8 +14,8 @@ export class NewTicketComponent {
   //@ViewChild('form') form?: ElementRef<HTMLFormElement>;
   private form = viewChild<ElementRef<HTMLFormElement>>('form');
 
-  onSubmit(title: string, ticketText: string, ) {
-    console.log(title, ticketText);
+  onSubmit(title: string, textInput: string, ) {
+    console.log(title, textInput);
 
     this.form()?.nativeElement.reset();
   }
