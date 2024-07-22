@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, HostBinding, HostListener, ViewEncapsulation, contentChild, inject, input } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, ElementRef, HostBinding, HostListener, ViewEncapsulation, contentChild, inject, input } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -12,7 +12,7 @@ import { Component, ContentChild, ElementRef, HostBinding, HostListener, ViewEnc
     '(click)': 'onClick()', //NOTE: add role attribute to host element
   }
 })
-export class ControlComponent {
+export class ControlComponent implements AfterContentInit {
   //add a property to your component class
   //just exists for backward compatibility, not used in this example.
   //use host: { class: 'control' } instead
@@ -32,6 +32,11 @@ export class ControlComponent {
   //angular will inject the element reference of the host element,
   //and give access to it via the el property
   private el = inject(ElementRef);
+
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit');
+    console.log(this.control());
+  }
 
   onClick() {
     console.log('clicked!');
