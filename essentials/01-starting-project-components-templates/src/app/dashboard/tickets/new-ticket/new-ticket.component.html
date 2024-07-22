@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit(titleInput.value, ticketText.value)">
+<form (ngSubmit)="onSubmit(titleInput.value, ticketText.value)" #form>
   <p>
     <app-control label="Title">
       <!-- https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement -->
