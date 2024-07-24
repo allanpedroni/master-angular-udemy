@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, ElementRef, HostBinding, HostListener, ViewEncapsulation, contentChild, inject, input } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, ElementRef, HostBinding, HostListener, ViewEncapsulation, afterNextRender, afterRender, contentChild, inject, input } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -28,6 +28,19 @@ export class ControlComponent implements AfterContentInit {
   private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
 
   label = input.required<string>();
+
+  constructor() {
+    // use afterRender and afterNextRender to get the control reference when a change happens anywhere
+    afterRender(() => {
+      console.log('afterRender');
+      console.log(this.control());
+    });
+
+    afterNextRender(() => {
+      console.log('afterNextRender');
+      console.log(this.control());
+    });
+  }
 
   //angular will inject the element reference of the host element,
   //and give access to it via the el property
