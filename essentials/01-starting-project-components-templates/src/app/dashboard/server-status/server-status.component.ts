@@ -1,4 +1,4 @@
-import { Component, DestroyRef } from '@angular/core';
+import { Component, DestroyRef, effect, signal } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -9,11 +9,13 @@ import { Component, DestroyRef } from '@angular/core';
 })
 export class ServerStatusComponent {
   //setting specific string values as types using union types
-  currentStatus: 'online' | 'offline' | 'unknown' = 'offline';
-  //private destroyRef =
+  currentStatus = signal<'online' | 'offline' | 'unknown'>('offline');
 
   constructor(private destroyRef: DestroyRef) {
-    //this.destroyRef = destroyRef;
+    //use effect to listen to changes in typescript properties (ex: currentStatus signal)
+    effect(() => {
+      console.log('Current status:', this.currentStatus());
+    });
   }
 
   ngOnInit(): void {
@@ -23,11 +25,11 @@ export class ServerStatusComponent {
       const rnd = Math.random();
 
       if (rnd < 0.5) {
-        this.currentStatus = 'online';
+        this.currentStatus.set('online');
       } else if (rnd < 0.9) {
-        this.currentStatus = 'offline';
+        this.currentStatus.set('offline');
       } else {
-        this.currentStatus = 'unknown';
+        this.currentStatus.set('unknown');
       }
     }, 5000);
 

@@ -33,12 +33,12 @@ export class ControlComponent implements AfterContentInit {
     // use afterRender and afterNextRender to get the control reference when a change happens anywhere
     afterRender(() => {
       console.log('afterRender');
-      console.log(this.control());
+      //console.log(this.control());
     });
 
     afterNextRender(() => {
       console.log('afterNextRender');
-      console.log(this.control());
+      //console.log(this.control());
     });
   }
 
@@ -48,12 +48,12 @@ export class ControlComponent implements AfterContentInit {
 
   ngAfterContentInit(): void {
     console.log('ngAfterContentInit');
-    console.log(this.control());
+    //console.log(this.control());
   }
 
   onClick() {
     console.log('clicked!');
-    console.log(this.el); //
-    console.log(this.control());
+    //console.log(this.el); //
+    //console.log(this.control());
   }
 }
