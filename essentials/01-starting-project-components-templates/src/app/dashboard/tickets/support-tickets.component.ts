@@ -22,4 +22,15 @@ export class SupportTicketsComponent {
     };
     this.tickets.push(ticket);
   }
+
+  onCloseTicket(id: string) {
+    this.tickets = this.tickets.map(ticket => {
+      if (ticket.id === id){
+        //create a new object with the same properties as the ticket object
+        //but with the status property set to 'closed'
+        return { ...ticket, status: 'closed' };
+      }
+      return ticket;
+    });
+  }
 }
