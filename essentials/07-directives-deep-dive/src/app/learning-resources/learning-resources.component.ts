@@ -8,4 +8,6 @@ import { SafeLinkDirective } from '../safe-link.directive';
   standalone: true,
   imports: [SafeLinkDirective]
 })
-export class LearningResourcesComponent {}
+export class LearningResourcesComponent {
+
+}
