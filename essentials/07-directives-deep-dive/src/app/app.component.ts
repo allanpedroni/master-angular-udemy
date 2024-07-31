@@ -20,6 +20,4 @@ export class AppComponent {
   constructor(private authService: AuthService) {
     console.log('AppComponent created');
   }
-
-
 }

@@ -12,6 +12,7 @@
 
   <!-- used in older angular versions -->
   <!-- <p *ngIf="isAdmin()">Only Admin should see this!</p> -->
-  <p  appAuth="admin">Only Admin should see this!</p>
-
+   <ng-template appAuth="admin">
+    <p>Only Admin should see this!</p>
+   </ng-template>
 </main>
