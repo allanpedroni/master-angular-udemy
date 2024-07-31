@@ -1,0 +1,29 @@
+//directive is a class that can modify the structure or behavior of elements in the DOM.
+
+import { Directive, effect, input } from '@angular/core';
+import { Permission } from './auth.model';
+import { AuthService } from './auth.service';
+
+@Directive({
+  selector: '[appAuth]',
+  standalone: true
+})
+export class AuthDirective {
+  userType = input.required<Permission>({alias: 'appAuth'});
+
+  constructor(private authService: AuthService) {
+    console.log('AuthDirective created');
+
+    //run some code whenever some signal values change
+    effect(() => {
+      console.log('User type:', this.userType());
+
+      if (this.authService.activePermission() == this.userType()) {
+        console.log('SHOW ELEMENT');
+      }
+      else {
+        console.log('HIDE ELEMENT');
+      }
+    });
+  }
+}

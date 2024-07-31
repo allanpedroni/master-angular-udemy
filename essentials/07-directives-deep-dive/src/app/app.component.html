@@ -6,11 +6,12 @@
   <app-auth />
 
   <!-- used only in angular 17 -->
-  @if (isAdmin()){
+  <!-- @if (isAdmin()){
     <p>Only Admin should see this!</p>
-  }
+  } -->
 
   <!-- used in older angular versions -->
   <!-- <p *ngIf="isAdmin()">Only Admin should see this!</p> -->
+  <p  appAuth="admin">Only Admin should see this!</p>
 
 </main>

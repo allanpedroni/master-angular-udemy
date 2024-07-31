@@ -1,3 +1,5 @@
+//directive is a class that can modify the structure or behavior of elements in the DOM.
+
 import { Directive, ElementRef, input } from '@angular/core';
 
 @Directive({
