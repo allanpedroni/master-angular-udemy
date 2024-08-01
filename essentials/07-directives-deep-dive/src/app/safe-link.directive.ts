@@ -1,6 +1,7 @@
 //directive is a class that can modify the structure or behavior of elements in the DOM.
 
 import { Directive, ElementRef, input } from '@angular/core';
+import { LogDirective } from './log.directive';
 
 @Directive({
   selector: 'a[appSafeLink]',
@@ -8,6 +9,7 @@ import { Directive, ElementRef, input } from '@angular/core';
   host: {
     '(click)': 'onComfirmLeavePage($event)',
   },
+  hostDirectives: [LogDirective]
 })
 export class SafeLinkDirective {
 
