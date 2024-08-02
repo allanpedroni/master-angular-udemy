@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'sort',
   standalone: true,
-  pure: false // This pipe is impure and needs to be re-evaluated on every change detection cycle
+  //pure: false // This pipe is impure and needs to be re-evaluated on every change detection cycle
               // It can impact performance, so use it with caution
 })
 export class SortPipe implements PipeTransform {

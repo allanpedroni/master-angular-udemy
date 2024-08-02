@@ -23,6 +23,10 @@ export class AppComponent {
     25, 37, 19, -4, 28, 21, 19, 28, 33, 31, 9, 11, 5, -12, -5,
   ];
 
+  constructor() {
+
+  }
+
   onReset(index: number) {
     const newHistoricTemperature = [...this.historicTemperatures];
     newHistoricTemperature[index] = Math.floor(Math.random() * 61) - 30;
