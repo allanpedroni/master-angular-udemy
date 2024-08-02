@@ -13,7 +13,13 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true
 })
 export class TemperaturePipe implements PipeTransform {
-  transform(value: any, ...args: any): string {
-    return value + '°C-';
+  //transform(value: string, ...args: any): string {
+  transform(value: string | number): string {
+
+    if (typeof value === 'string') {
+      value = parseFloat(value);
+    }
+
+    return value + ' °C';
   }
 }
