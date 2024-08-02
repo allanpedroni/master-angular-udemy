@@ -24,6 +24,8 @@ export class AppComponent {
   ];
 
   onReset(index: number) {
-    this.historicTemperatures[index] = 18;
+    const newHistoricTemperature = [...this.historicTemperatures];
+    newHistoricTemperature[index] = Math.floor(Math.random() * 61) - 30;
+    this.historicTemperatures = newHistoricTemperature;
   }
 }
