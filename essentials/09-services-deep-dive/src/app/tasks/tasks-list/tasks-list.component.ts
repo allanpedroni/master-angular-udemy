@@ -1,7 +1,8 @@
-import { Component, Inject, signal, computed } from '@angular/core';
+import { Component, Inject, signal, computed, inject } from '@angular/core';
 
 import { TaskItemComponent } from './task-item/task-item.component';
-import { TasksService } from './../tasks.service';
+import { TasksService } from '../tasks.service';
+import { TaskServiceToken } from '../../../main';
 
 @Component({
   selector: 'app-tasks-list',
@@ -34,7 +35,7 @@ export class TasksListComponent {
     }
   });
 
-  constructor(private tasksServices: TasksService) {
+  constructor(@Inject(TaskServiceToken) private tasksServices: TasksService) {
   }
 
   onChangeTasksFilter(filter: string) {
