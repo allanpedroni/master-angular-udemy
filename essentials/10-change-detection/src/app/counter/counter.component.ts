@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, NgZone, OnInit, signal } from '@angular/core';
 
 import { InfoMessageComponent } from '../info-message/info-message.component';
 
@@ -9,12 +9,35 @@ import { InfoMessageComponent } from '../info-message/info-message.component';
   styleUrl: './counter.component.css',
   imports: [InfoMessageComponent],
 })
-export class CounterComponent {
+export class CounterComponent implements OnInit {
+  private zone = inject(NgZone);
+
   count = signal(0);
 
   get debugOutput() {
     console.log('[Counter] "debugOutput" binding re-evaluated.');
     return 'Counter Component Debug Output';
+  }
+
+  ngOnInit() {
+
+    // setTimeout(() => {
+    //   this.count.set(0);
+    //   // this.zone.run(() => {
+    //   //   this.count.update((prevCount) => prevCount + 1);
+    //   // });
+    // });
+
+    // avoiding zone pollution by running outside of Angular
+    this.zone.runOutsideAngular(() => {
+      setTimeout(() => {
+        console.log('timer expired!');
+        // this.zone.run(() => {
+        //   this.count.update((prevCount) => prevCount + 1);
+        // });
+      }, 5000);
+    });
+
   }
 
   onDecrement() {
