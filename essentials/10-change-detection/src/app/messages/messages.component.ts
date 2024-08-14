@@ -9,7 +9,8 @@ import { NewMessageComponent } from './new-message/new-message.component';
   templateUrl: './messages.component.html',
   styleUrl: './messages.component.css',
   imports: [MessagesListComponent, NewMessageComponent],
-
+  //tell the angular to use the OnPush change detection strategy inside this compoment tree
+  //this limit the change detection to the component and its children
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MessagesComponent {
