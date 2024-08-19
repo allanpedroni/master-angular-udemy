@@ -1,33 +1,20 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, DestroyRef, Component, inject, OnInit } from '@angular/core';
 import { MessagesService } from '../messages.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-messages-list',
   standalone: true,
+  imports: [AsyncPipe],
   templateUrl: './messages-list.component.html',
   styleUrl: './messages-list.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MessagesListComponent implements OnInit {
+export class MessagesListComponent {
 
   private messagesService = inject(MessagesService);
-  private cdRef = inject(ChangeDetectorRef);
-  private destroyRef = inject(DestroyRef);
 
-  ngOnInit() {
-    const subscription = this.messagesService.messages$.subscribe((messages) => {
-      this.messages = messages;
-      //mark the component to be checked by the change detection
-      this.cdRef.markForCheck();
-    });
-
-    this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe();
-      console.log('[MessagesList] "onDestroy" hook called.');
-    });
-  }
-
-  messages: string[] = [];
+  messages$ = this.messagesService.messages$;
 
   get debugOutput() {
     console.log('[MessagesList] "debugOutput" binding re-evaluated.');
